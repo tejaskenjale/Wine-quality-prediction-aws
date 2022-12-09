@@ -69,5 +69,15 @@ Run the Testing file: -
 Prediction using Docker Container:-
       The container runs the validationData.csv and prints Test Error Link to docker hub image:
 
+Launch your ec2-instance and then step-up docker using the above steps.
+Place all the files from github into your instance.
+Pull the image from repositroy: 
+	
+	docker pull tejashk/win_quality_prediction
+Run the image using : 
+	
+	docker run tejashk/win_quality_prediction driver test.py ValidationDataset.csv model
+
+
   
 
