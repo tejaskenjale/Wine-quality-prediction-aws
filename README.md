@@ -82,9 +82,11 @@ CS-643- Programming Assignment-2
 - Place all the files from github into your instance.
 - Pull the image from repositroy: 
 	
+	
 	docker pull tejashk/win_quality_prediction
 
 - Run the image using : 
+	
 	
 	docker run tejashk/win_quality_prediction driver test.py ValidationDataset.csv model
 
