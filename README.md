@@ -9,7 +9,6 @@ File uploading on S3 bucket: - After cluster creation S3 bucket will be auto gen
 
 Now we will pull the stored files from S3 bucket to the master node by connecting to the master node (Using following commands).
 
-
 		aws s3 cp s3://aws-logs-877244108283-us-east-1/elasticmapreduce/j-38II9TYTEUBU5/TrainingDataset.csv ./
     		aws s3 cp s3://aws-logs-877244108283-us-east-1/elasticmapreduce/j-38II9TYTEUBU5/ValidationDataset.csv ./
     		aws s3 cp s3://aws-logs-877244108283-us-east-1/elasticmapreduce/j-38II9TYTEUBU5/Training.py ./
