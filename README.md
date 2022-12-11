@@ -3,8 +3,7 @@ CS-643- Programming Assignment-2
 
 **Parallel Training Implementation: - **
 
-Cluster Creation: - 
-We will create 1 cluster with 5 nodes where 1 node will act as master node and others will be slave nodes.
+Cluster Creation: - We will create 1 cluster with 5 nodes where 1 node will act as master node and others will be slave nodes.
 
 File uploading on S3 bucket: - After cluster creation S3 bucket will be auto generated. Here we will upload Training.py file and the dataset. 
 
