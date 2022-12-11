@@ -4,58 +4,58 @@ CS-643- Programming Assignment-2
 ## Parallel Training Implementation: - ##
 ---------------
 
-- Item 1 Cluster Creation: - We will create 1 cluster with 5 nodes where 1 node will act as master node and others will be slave nodes.
+- Cluster Creation: - We will create 1 cluster with 5 nodes where 1 node will act as master node and others will be slave nodes.
 
-- Item 1 File uploading on S3 bucket: - After cluster creation S3 bucket will be auto generated. Here we will upload Training.py file and the dataset. 
+- File uploading on S3 bucket: - After cluster creation S3 bucket will be auto generated. Here we will upload Training.py file and the dataset. 
 
-- Item 1 Now we will pull the stored files from S3 bucket to the master node by connecting to the master node (Using following commands).
+- Now we will pull the stored files from S3 bucket to the master node by connecting to the master node (Using following commands).
 
 		aws s3 cp s3://aws-logs-877244108283-us-east-1/elasticmapreduce/j-38II9TYTEUBU5/TrainingDataset.csv ./
     	aws s3 cp s3://aws-logs-877244108283-us-east-1/elasticmapreduce/j-38II9TYTEUBU5/ValidationDataset.csv ./
     	aws s3 cp s3://aws-logs-877244108283-us-east-1/elasticmapreduce/j-38II9TYTEUBU5/Training.py ./
     
-- Item 1 Now we will make these files available to other slave nodes(Using following commands).
+- Now we will make these files available to other slave nodes(Using following commands).
      hadoop fs -put TrainingDataset.csv
 		 hadoop fs -put ValidationDataset.csv
      
-- Item 1 Type “ls” and hit enter you will find all the files stored in it.
+- Type “ls” and hit enter you will find all the files stored in it.
 
-- Item 1 Install all the required libraries by storing it in “requirements.txt”(We’ve already uploaded it in S3 bucket) and running the following command.
+- Install all the required libraries by storing it in “requirements.txt”(We’ve already uploaded it in S3 bucket) and running the following command.
 			pip install -r requirements.txt
 	
-- Item 1 Scala Installation on master node: -
+- Scala Installation on master node: -
 			wget https://downloads.lightbend.com/scala/2.12.4/scala-2.12.4.rpm
 			sudo yum install scala-2.12.4.rpm
 
-- Item 1 Spark Installation: -
+- Spark Installation: -
 			wget https://dlcdn.apache.org/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz
       sudo tar xvf spark-3.3.1-bin-hadoop3.tgz -C /opt
       sudo chown -R ec2-user:ec2-user /opt/spark-3.3.1-bin-hadoop3
       sudo ln -fs spark-3.3.1-bin-hadoop3 /opt/spark
 	 
 
-- Item 1 Let’s run the Training.py using: - 
-- Item 1 spark-submit Training.py
+- Let’s run the Training.py using: - 
+- spark-submit Training.py
 
 
 ## Predicting the wine quality on single machine: - ##
 ---------------
 
-- Item 1 Create new ec2 instance and connect to it.
-- Item 1 Install python, Java, Spark, Scala, and all the required dependencies.
-- Item 1 The trained model will get store in S3 bucket lets copy it from S3 to ec2 instance: - 
+- Create new ec2 instance and connect to it.
+- Install python, Java, Spark, Scala, and all the required dependencies.
+- The trained model will get store in S3 bucket lets copy it from S3 to ec2 instance: - 
 
       aws s3 cp s3://aws-logs-766621730595-us-east-1/elasticmapreduce/j-1CPN0XQGUGAEC/trainingmodel.model ./ --recursive
 
 
-- Item 1 Now Unzip the model and move the contents to the new folder which we will be creating now: - 	
+- Now Unzip the model and move the contents to the new folder which we will be creating now: - 	
 
     tar -xzvf model.tar.gz
     mkdir model
     mv data<downloaded file> model<model folder>
     mv metadata<downloaded file> model<model folder>
 
-- Item 1 Update the path Environment: -
+- Update the path Environment: -
 	
       vim ~/.bash_profile
       copy following lines into file and then save it
@@ -63,11 +63,11 @@ CS-643- Programming Assignment-2
       PATH=$PATH:$SPARK_HOME/bin
       export PATH
 
-- Item 1 Save the file and run the following command: - 
+- Save the file and run the following command: - 
 
       source  ~/.bash_profile
 
-- Item 1 Run the Testing file: - 
+- Run the Testing file: - 
 	
         spark-submit test.py
 
@@ -76,15 +76,15 @@ CS-643- Programming Assignment-2
 ## Prediction using Docker Container:- ##
 ---------------
 	
-- Item 1 The container runs the validationData.csv and prints Test Error Link to docker hub image
+- The container runs the validationData.csv and prints Test Error Link to docker hub image
 
-- Item 1 Launch your ec2-instance and then step-up docker using the above steps.
-- Item 1 Place all the files from github into your instance.
-- Item 1 Pull the image from repositroy: 
+- Launch your ec2-instance and then step-up docker using the above steps.
+- Place all the files from github into your instance.
+- Pull the image from repositroy: 
 	
 	docker pull tejashk/win_quality_prediction
 
-- Item 1 Run the image using : 
+- Run the image using : 
 	
 	docker run tejashk/win_quality_prediction driver test.py ValidationDataset.csv model
 
