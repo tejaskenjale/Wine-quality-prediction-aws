@@ -8,9 +8,11 @@ Cluster Creation: - We will create 1 cluster with 5 nodes where 1 node will act 
 File uploading on S3 bucket: - After cluster creation S3 bucket will be auto generated. Here we will upload Training.py file and the dataset. 
 
 Now we will pull the stored files from S3 bucket to the master node by connecting to the master node (Using following commands).
+
+
 		aws s3 cp s3://aws-logs-877244108283-us-east-1/elasticmapreduce/j-38II9TYTEUBU5/TrainingDataset.csv ./
-    aws s3 cp s3://aws-logs-877244108283-us-east-1/elasticmapreduce/j-38II9TYTEUBU5/ValidationDataset.csv ./
-    aws s3 cp s3://aws-logs-877244108283-us-east-1/elasticmapreduce/j-38II9TYTEUBU5/Training.py ./
+    		aws s3 cp s3://aws-logs-877244108283-us-east-1/elasticmapreduce/j-38II9TYTEUBU5/ValidationDataset.csv ./
+    		aws s3 cp s3://aws-logs-877244108283-us-east-1/elasticmapreduce/j-38II9TYTEUBU5/Training.py ./
     
 Now we will make these files available to other slave nodes(Using following commands).
      hadoop fs -put TrainingDataset.csv
