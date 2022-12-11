@@ -39,6 +39,7 @@ CS-643- Programming Assignment-2
 
 
 ## Predicting the wine quality on single machine: - ##
+---------------
 
 - Item 1 Create new ec2 instance and connect to it.
 - Item 1 Install python, Java, Spark, Scala, and all the required dependencies.
@@ -73,6 +74,7 @@ CS-643- Programming Assignment-2
 
   
 ## Prediction using Docker Container:- ##
+---------------
 	
 - Item 1 The container runs the validationData.csv and prints Test Error Link to docker hub image
 
